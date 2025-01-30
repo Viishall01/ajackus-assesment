@@ -65,6 +65,20 @@ function App() {
     }
   }; 
 
+  // deleting data 
+  const onDelete = async (id) => {
+    try {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+        method: "DELETE",
+      });
+
+      if (res.status === 200) {
+        setUsers(users.filter((user) => user.id !== id));
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="flex justify-evenly relative">
@@ -75,7 +89,7 @@ function App() {
 
       <div className="overflow-y-scroll">
         {users.map((user) => (
-          <UserTile key={user.id} id={user.id} name={user.name} email={user.email} onEdit={onEdit}/>
+          <UserTile key={user.id} id={user.id} name={user.name} email={user.email} onEdit={onEdit} onDelete={onDelete}/>
         ))}
       </div>
 
