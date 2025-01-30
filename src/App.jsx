@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import UserTile from "./components/UserTile";
 import AddUser from "./components/AddUser";
+import EditUserModal from "./components/EditUserModel";
 
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [updatedUsers, setUpdatedUsers] = useState(null);
 
   useEffect(()=>{
     fetchData();
@@ -40,6 +42,29 @@ function App() {
     }
   };
 
+  // Updating User data
+  
+  const onEdit = (user) => {
+    setUpdatedUsers(user);
+  };
+
+  const onSaveEdit = async (id, updatedUser) => {
+    try {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedUser),
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      });
+
+      if (res.status === 200) {
+        setUsers(users.map((user) => (user.id === id ? updatedUser : user)));
+        setUpdatedUsers(null);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }; 
+
 
   return (
     <div className="flex justify-evenly relative">
@@ -50,9 +75,11 @@ function App() {
 
       <div className="overflow-y-scroll">
         {users.map((user) => (
-          <UserTile key={user.id} id={user.id} name={user.name} email={user.email}/>
+          <UserTile key={user.id} id={user.id} name={user.name} email={user.email} onEdit={onEdit}/>
         ))}
       </div>
+
+      {updatedUsers && <EditUserModal user={updatedUsers} onSave={onSaveEdit} onClose={() => setUpdatedUsers(null)} />}
     </div>
   )
 }
