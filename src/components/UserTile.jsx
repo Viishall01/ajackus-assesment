@@ -2,17 +2,22 @@ import React from 'react'
 
 const UserTile = ({id, name, email, onEdit, onDelete}) => {
   return (
-    <div className='flex mb1 rounded-md max-w-96 justify-between items-center border border-black'>
-        <div className='flex flex-col m-2 '>
-            <h2><span className='p-2'>{id}</span>{name}</h2>
-            <h3 className='text-blue-600 text-sm mx-5'>{email}</h3>
+    <div className='flex items-center justify-between bg-white shadow-md rounded-lg p-4 mb-2 border border-gray-200 w-full max-w-md'>
+        <div className='flex flex-col '>
+        <h2 className="text-lg font-semibold text-gray-800">
+          <span className="text-gray-500 mr-2">#{id}</span> {name}
+         </h2>
+         <h3 className="text-blue-500 text-sm">{email}</h3>
         </div>
-        <div className='flex m-2 items-center gap-2'> 
-            <button className=' px-2 cursor-pointer hover:scale-110 transition-all border border-gray-600 rounded-lg' onClick={() => onEdit({ id, name, email })}>Edit</button>
-            <button className=' px-2 cursor-pointer hover:scale-110 transition-all border border-gray-600 rounded-lg' onClick={() => onDelete(id)}>Delete</button>
+        <div className='flex gap-2'> 
+            <button className='px-3 py-1 text-sm font-medium hover:scale-110 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition-all' onClick={() => onEdit({ id, name, email })}>Edit</button>
+            <button className='px-3 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-all hover:scale-110' onClick={() => onDelete(id)}>Delete</button>
         </div>
     </div>
   )
 }
 
 export default UserTile
+
+
+
