@@ -12,7 +12,7 @@ function App() {
   const fetchData = async () => {
     try{
       const res = await fetch("https://jsonplaceholder.typicode.com/users");
-      const data = await res.json();
+      const data = await res.json(); 
       setUsers(data);
     }catch(error){
       console.log("Error in Fetching data", error);

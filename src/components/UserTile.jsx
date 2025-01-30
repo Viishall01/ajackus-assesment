@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserTile = ({id, name, email}) => {
   return (
-    <div className='flex mb-1 rounded-md max-w-96 justify-between items-center border border-black'>
+    <div className='flex mb1 rounded-md max-w-96 justify-between items-center border border-black'>
         <div className='flex flex-col m-2 '>
             <h2><span className='p-2'>{id}</span>{name}</h2>
             <h3 className='text-blue-600 text-sm mx-5'>{email}</h3>
