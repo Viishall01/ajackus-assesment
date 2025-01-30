@@ -10,12 +10,12 @@ const handleOnSubmit = (e) => {
 }
 
   return (
-    <div className="mt-60 min-w-sm items-center">
+    <div className="bg-white p-6 rounded-xl shadow-xl w-96 mt-48">
       <form onSubmit={handleOnSubmit} className="flex flex-col justify-between items-center border border-black rounded-lg">
-        <h3 className="mt-6 bg-gray-200 w-full text-center mb-2">Add User</h3>
-        <input placeholder="Name" name="name"  className="outline-none border border-red-500 m-2 "/>
-        <input placeholder="Email" name="email" className="outline-none border border-red-500 m-2 " />
-        <button onSubmit={handleOnSubmit} className="border border-slate-400 rounded-md m-2 px-5 mb-12 ">Add</button>
+        <h3 className="text-xl font-bold text-gray-700 m-4">Add User</h3>
+        <input placeholder="Name" name="name"  className="border border-gray-300 p-2 w-[18rem] rounded-lg focus:ring focus:ring-blue-300 mb-4"/>
+        <input placeholder="Email" name="email" className="border border-gray-300 p-2 w-[18rem] rounded-lg focus:ring focus:ring-blue-300 mb-4" />
+        <button onSubmit={handleOnSubmit} className="bg-green-500 text-white px-12 py-2 rounded-lg mr-2 hover:bg-green-600 transition mb-4">Add</button>
         <hr />
       </form>
     </div>
